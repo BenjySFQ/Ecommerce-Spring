@@ -2,13 +2,11 @@ package com.benjy.ecommerce.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
+@Table(name = "productos")
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,5 +16,8 @@ public class Producto {
     private String imagen;
     private double precio;
     private int cantidad;
+    @ManyToOne
+    @JoinColumn(name ="id_usuario")
+    private Usuario usuario;
 
 }

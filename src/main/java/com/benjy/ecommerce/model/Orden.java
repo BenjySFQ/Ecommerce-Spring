@@ -2,14 +2,12 @@ package com.benjy.ecommerce.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
 @Entity
+@Table(name = "ordenes")
 public class Orden {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +16,11 @@ public class Orden {
     private Date fechaCreacion;
     private Date fechaRecibida;
     private double total;
+    @ManyToOne
+    @JoinColumn(name ="id_usuario")
+    private Usuario usuario;
+
+
 
 
 }
