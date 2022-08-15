@@ -1,6 +1,7 @@
 package com.benjy.ecommerce.model;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -19,5 +20,6 @@ public class Producto {
     @ManyToOne
     @JoinColumn(name ="id_usuario")
     private Usuario usuario;
+
 
 }
