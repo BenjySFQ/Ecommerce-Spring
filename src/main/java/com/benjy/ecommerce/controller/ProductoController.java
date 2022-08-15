@@ -40,13 +40,19 @@ public class ProductoController {
         return "redirect:/productos";
     }
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable Long id){
+    public String edit(@PathVariable Long id,Model model){
         Producto producto=new Producto();
         Optional<Producto>optionalProducto=productoService.get(id);
         producto=optionalProducto.get();
 
         LOGGER.info("Producto buscado: {}",producto);
+        model.addAttribute("producto",producto);
         return "productos/edit";
+    }
+    @PostMapping("/update")
+    public String update(Producto producto){
+        productoService.update(producto);
+        return "redirect:/productos";
     }
 
 
